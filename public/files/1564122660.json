@@ -1,2 +1,0 @@
-{"_id":{"$oid":"5d355018a0427123680071a2"},"user_id":"5d3537b1a042710948001042","content":"User2 like Question","postable_id":"5d353414a04271008c0039c2","postable_type":"Question","created_at":null,"updated_at":null}
-{"_id":{"$oid":"5d355018a0427123680071a3"},"user_id":"5d3537b1a042710948001043","content":"User1 vote Answer","postable_id":"5d353b9fa0427127a4001222","postable_type":"Answers","created_at":null,"updated_at":null}

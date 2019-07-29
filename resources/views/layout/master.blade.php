@@ -19,7 +19,7 @@
     @include('layout.js')
 
     @yield('js')
-
+    @yield('script')
     <script>
         $('#search').keyup(function () {
             var keyword = $(this).val();

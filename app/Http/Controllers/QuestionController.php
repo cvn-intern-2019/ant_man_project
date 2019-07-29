@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Category;
 use App\Attachment;
 use Illuminate\Support\Facades\Auth;
+use File;
 
 
 class QuestionController extends Controller
@@ -30,6 +31,10 @@ class QuestionController extends Controller
 		$question->total_like = 0;
 		$question->total_dislike = 0;
 		$question->total_answer = 0;
+		if($request->hasFile('attachment')) {
+			$question->attachment_path = $request->attachment->getClientOriginalName();
+			$request->attachment->move('files\\', $request->attachment->getClientOriginalName());
+		}
 		$question->save();
 		return redirect('/');
 	}
@@ -51,6 +56,11 @@ class QuestionController extends Controller
 		$question->title = $request->get('title');
 		$question->content = $request->get('content');
 		$question->category_id = $request->get('category');
+		if($request->hasFile('attachment')) {
+			if(!empty($question->attachment_path)) File::delete("files\\".$question->attachment_path);
+			$question->attachment_path = $request->attachment->getClientOriginalName();
+			$request->attachment->move('files\\', $request->attachment->getClientOriginalName());
+		}
 		$question->save();
 		return redirect()->route('view-topic', ['id' => $id]);
 	}

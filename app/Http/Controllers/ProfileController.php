@@ -41,10 +41,9 @@ class ProfileController extends Controller
     public function change_avatar(Request $request)
     {
 		if ($request->hasFile('avatar')) {
-            $request->avatar->move('img\avatar\\', $request->avatar->getClientOriginalName());
+            $request->avatar->move('img\avatar\\', session('id').$request->avatar->getClientOriginalName());
             $user = User::find(session('id'));
-            if($user->avatar!='default_avatar.png') File::delete('img\avatar\\'.$user->avatar);
-            $user->avatar=$request->avatar->getClientOriginalName();
+            $user->avatar=session('id').$request->avatar->getClientOriginalName();
             $user->save();
 
             Session()->put('avatar','img\avatar\\'.$user->avatar);

@@ -13,7 +13,7 @@
         //uploadUrl: '/upload_article_poster',
         uploadAsync: false,
         showUpload: false,
-        maxFileSize: 1024,
+        maxFileSize: 5120,
         removeClass: 'btn btn-warning'
     });
 
@@ -105,11 +105,11 @@
     @if (Auth::check())
     <div class="card shadow" style="margin-top: 20px;">
         <div class="card-body">
-            <form>
+            <form enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="file-loading">
-							<input required id="fuMain" name="avatar" type="file">
+							<input id="fuMain" name="avatar" type="file">
 						</div>
 					</div>
 					<div class="col-sm-8">
