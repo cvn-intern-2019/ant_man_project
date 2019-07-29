@@ -18,12 +18,6 @@
 
     @include('layout.js')
 
-<<<<<<< HEAD
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-@yield('script')
-=======
     @yield('js')
 
     <script>
@@ -48,7 +42,7 @@
 			else $('#result_list').hide();
         });
     </script>
->>>>>>> 0c65e0dc4ef1f87f15bdb4b42841df8521da25a0
+
 </body>
 
 </html>
