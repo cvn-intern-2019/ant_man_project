@@ -13,7 +13,7 @@
         //uploadUrl: '/upload_article_poster',
         uploadAsync: false,
         showUpload: false,
-        maxFileSize: 1024,
+        maxFileSize: 5120,
         removeClass: 'btn btn-warning'
     });
 
@@ -22,7 +22,6 @@
     });
     var renderedHTML = simplemde.options.previewRender($('#plain_content').text());
 	$('#content_markdown').html(renderedHTML);
-
 </script>
 
 @endsection
@@ -114,82 +113,9 @@
 							<input required id="fuMain" name="avatar" type="file">
 						</div>
 					</div>
-
-
-					<a href="{{asset('edittopic')}}/{{ $question->id }}"><i class="float-right fa fa-pencil-square-o" aria-hidden="true" style="margin-right:10px; font-size:120%"></i></a>
-
-					@else
-					@endif
-
-				</div>	
-				<div>
-					<small class="text-muted" style="color:#5488c7;">
-						<i class="fa fa-calendar" aria-hidden="true"> </i> {{$question->created_at}} 
-					</small>	
-				</div>
-				<br>
-			</div>
-			<div class="col-sm-12 d-flex justify-content-sm-between">
-				<h3>{{$question->title}}</h3>
-				<span class="badge badge-info" style="height: 20px">{{$question->category->name}}</span>	
-			</div>
-			<div class="col-sm-12">
-				<p id="plain_content" hidden>{{$question->content}}</p>			
-				<p id="content_markdown"></p>
-				<div class="row" style="width: 300px; color:#787878; font-size: 20px; margin-bottom: 10px">
-					<div class="col-sm">
-						@if (Auth::check())
-						<a href="{{asset('like')}}/{{$question->_id}}/Question/{{Session::get('id')}}"><i class="fa fa-thumbs-up"></i></a>					{{$question->total_like}}
-						@else
-						<a href="{{route('sign-in')}}"><i class="fa fa-thumbs-up"></i></a>{{$question->total_like}}
-						@endif
-					</div>
-					<div class="col-sm">
-						<a href="{{asset('dislike')}}/{{$question->_id}}/Question/{{Session::get('id')}}"><i class="fa fa-thumbs-down"></i></a>
-						{{$question->total_dislike}}
-					</div>
-					<div class="col-sm">
-						<i class="fa fa-reply"></i>
-						{{$question->total_answer}}
-					</div>
-				</div>
-			</div>			
-		</div>
-	</div>
-	@if (Auth::check())
-	<div class="card shadow" style="margin-top: 20px;" >
-		<div class="card-body">
-			<form>
-				<textarea id="MyID" rows="2"></textarea>
-				<i class="fa fa-paperclip fa-lg float-left"></i>
-				<button type="button" class="btn btn-primary float-right" >Submit</button>
-			</form>
-		</div>		
-	</div>
-	@endif
-
-	<div class="card shadow" style="margin-top: 20px; margin-bottom: 20px; " >
-		<div class="card-header">
-			<h3>Answer</h3>
-		</div>
-
-	<!-- ---------------------------------------------------------------------------------------------------------------------------------- -->
-
-		@if ($best_answer!=null)
-		<div class="row px-3 pt-3">
-
-			<div class="col-sm-1">
-				<img src="{{asset('img/avatar')}}/{{$best_answer->user->avatar}}" class="test rounded-circle align-middle">
-				<br>
-				<br>
-
-				<div class="d-flex" style="justify-content :center; align-items:center;  font-size:200%; color:#66ad1f">
-					<i class="fa fa-check" aria-hidden="true"></i>
-
 					<div class="col-sm-8">
 						<textarea id="MyID"></textarea>
 					</div>
-
 				</div>
                 <button type="button" class="btn btn-primary float-right">Answer</button>
             </form>
@@ -319,7 +245,4 @@
     </div>
 
 </div>
-
-
 @endsection
-
